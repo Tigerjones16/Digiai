@@ -1,0 +1,63 @@
+{
+  "entities": {
+    "userProfile": {
+      "title": "User Profile",
+      "description": "User profile with preferences and metadata",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string", "maxLength": 128 },
+        "email": { "type": "string", "maxLength": 256 },
+        "displayName": { "type": "string", "maxLength": 100 },
+        "photoURL": { "type": "string", "maxLength": 500 },
+        "createdAt": { "type": "string", "maxLength": 64 },
+        "updatedAt": { "type": "string", "maxLength": 64 }
+      },
+      "required": ["uid", "createdAt"]
+    },
+    "userBookmark": {
+      "title": "User Bookmark",
+      "description": "Saved AI news article or course bookmark",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 128 },
+        "userId": { "type": "string", "maxLength": 128 },
+        "articleId": { "type": "string", "maxLength": 128 },
+        "title": { "type": "string", "maxLength": 300 },
+        "sourceUrl": { "type": "string", "maxLength": 500 },
+        "category": { "type": "string", "maxLength": 50 },
+        "createdAt": { "type": "string", "maxLength": 64 }
+      },
+      "required": ["id", "userId", "articleId", "title", "createdAt"]
+    },
+    "formLink": {
+      "title": "Google Form Reference",
+      "description": "Google Form created or linked for AI feedback, surveys, or quizzes",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 128 },
+        "userId": { "type": "string", "maxLength": 128 },
+        "formId": { "type": "string", "maxLength": 128 },
+        "title": { "type": "string", "maxLength": 200 },
+        "responderUri": { "type": "string", "maxLength": 500 },
+        "editUri": { "type": "string", "maxLength": 500 },
+        "description": { "type": "string", "maxLength": 500 },
+        "createdAt": { "type": "string", "maxLength": 64 }
+      },
+      "required": ["id", "userId", "formId", "title", "createdAt"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "userProfile",
+      "description": "User profile documents keyed by Auth UID"
+    },
+    "/users/{userId}/bookmarks/{bookmarkId}": {
+      "schema": "userBookmark",
+      "description": "User-specific bookmarked stories and courses"
+    },
+    "/users/{userId}/forms/{formDocId}": {
+      "schema": "formLink",
+      "description": "User-generated Google Forms for AI surveys and comprehension tests"
+    }
+  }
+}

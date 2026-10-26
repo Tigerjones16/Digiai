@@ -1,0 +1,6 @@
+{
+  "name": "DigAI - Bite-Sized AI News & Courses",
+  "description": "AI news and free courses, updated every 15 minutes. Ask questions answered only from today's stories.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

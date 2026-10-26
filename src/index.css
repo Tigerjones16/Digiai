@@ -1,0 +1,85 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --apple-font: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Plus Jakarta Sans", system-ui, sans-serif;
+    --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+    --apple-blue: #0071e3;
+    --apple-blue-hover: #0077ed;
+    --apple-glass: rgba(22, 22, 26, 0.72);
+    --apple-glass-border: rgba(255, 255, 255, 0.08);
+  }
+
+  body {
+    font-family: var(--apple-font);
+    background-color: #050507;
+    color: #f5f5f7;
+    overflow-x: hidden;
+  }
+}
+
+/* Apple Design Skill Principles (Emil Kowalski / WWDC 17 Principles) */
+
+/* Principle 15: Big headlines letter-spacing -0.02em */
+.apple-headline {
+  letter-spacing: -0.02em;
+}
+
+/* Principle 01: Press feedback scale(0.97) within 100ms */
+.apple-press {
+  transition: transform 100ms cubic-bezier(0.2, 0.8, 0.2, 1), opacity 100ms ease;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+.apple-press:active {
+  transform: scale(0.97);
+}
+
+/* Principle 12: Glass blur(20px) saturate(180%) */
+.apple-glass {
+  background: rgba(18, 18, 22, 0.75);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.apple-glass-subtle {
+  background: rgba(25, 25, 30, 0.55);
+  backdrop-filter: blur(16px) saturate(160%);
+  -webkit-backdrop-filter: blur(16px) saturate(160%);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+/* Apple segmented control styling */
+.apple-segmented-pill {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 9999px;
+  padding: 3px;
+}
+
+/* Custom scrollbars that feel like iOS / macOS overlay */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+/* Principle 14: Reduced motion handling */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
